@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SERA</title>
+  <script type="text/javascript">
+    // مسار تطبيق React يكون على الشكل: /SERA/
+    var pathSegmentsToKeep = 1;
+
+    var l = window.location;
+    var port = l.port ? ':' + l.port : '';
+    
+    // إعادة توجيه إلى الصفحة الرئيسية مع الحفاظ على المسار الأصلي كمعلمة في الرابط
+    l.replace(
+      l.protocol + '//' + l.hostname + port + 
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+</body>
+</html> 

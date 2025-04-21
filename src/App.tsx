@@ -1,6 +1,6 @@
 import React from 'react';
 import './router-config'; // استيراد ملف إسكات تحذيرات React Router
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AuthProvider } from './context/AuthContext';
 import theme from './theme';
@@ -20,10 +20,13 @@ import ProgressPage from './pages/analytics/ProgressPage';
 import ProfileSettings from './pages/settings/ProfileSettings';
 
 const App: React.FC = () => {
+  // استخدام قيمة base من Vite لضمان التوافق مع GitHub Pages
+  const basePath = import.meta.env.BASE_URL || '/';
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+      <Router basename={basePath}>
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Home />} />
