@@ -20,13 +20,10 @@ import ProgressPage from './pages/analytics/ProgressPage';
 import ProfileSettings from './pages/settings/ProfileSettings';
 
 const App: React.FC = () => {
-  // استخدام قيمة base من Vite لضمان التوافق مع GitHub Pages
-  const basePath = import.meta.env.BASE_URL || '/';
-  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename={basePath}>
+      <Router>
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Home />} />
